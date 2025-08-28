@@ -1,24 +1,10 @@
-// import { Module } from '@nestjs/common';
-// import { AppController } from './app.controller';
-// import { AppService } from './app.service';
-
-// @Module({
-//   imports: [],
-//   controllers: [AppController],
-//   providers: [AppService],
-// })
-// export class AppModule {}
 
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
-// import { UserModule } from './user/user.module';
 import { UserModule } from './auth/user.module';
-// import { CategoryModule } from './category/category.module';
 import { CategoryModule } from './category/category.module';
-// import { CarModule } from './car/car.module';
 import { CarModule } from './car/car.module';
-// import { PrismaModule } from './common/prisma/prisma.module';
 import { PrismaModule } from './services/prisma.module';
 
 @Module({

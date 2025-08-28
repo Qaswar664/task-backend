@@ -10,8 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CategoryService } from 'src/services/category.service';
-// import { CreateCategoryDto } from './dto/create-category.dto';
-// import { UpdateCategoryDto } from './dto/update-category.dto';
 import { CreateCategoryDto } from 'src/category/create-category.dto';
 import { UpdateCategoryDto } from 'src/category/update-category.dto';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';

@@ -1,9 +1,5 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-// import { PrismaService } from '../common/prisma/prisma.service';
 import { PrismaService } from 'src/services/prisma.service';
-
-// import { CreateCarDto } from './dto/create-car.dto';
-// import { UpdateCarDto } from './dto/update-car.dto';
 import { CreateCarDto } from 'src/car/create-car.dto';
 import { UpdateCarDto } from 'src/car/update-car.dto';
 
