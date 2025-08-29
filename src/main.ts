@@ -5,17 +5,19 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // Global validation pipe
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-    transform: true,
-  }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true,
+    }),
+  );
 
   // CORS configuration
   app.enableCors({
-    origin: 'http://localhost:3001',
-    credentials: true,
+    origin: 'http://localhost:3000', // frontend URL
+    credentials: true, // allow cookies if needed
   });
 
   // Swagger documentation
@@ -25,7 +27,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addBearerAuth()
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 

@@ -2,28 +2,30 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsInt, Min, Max } from 'class-validator';
 
 export class CreateCarDto {
-  @ApiProperty()
+  @ApiProperty({ description: 'Car make' })
   @IsString()
   @IsNotEmpty()
   make: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Car model' })
   @IsString()
   @IsNotEmpty()
   model: string;
 
-  @ApiProperty()
-  @IsInt()
-  @Min(1900)
-  @Max(new Date().getFullYear() + 1)
+  @ApiProperty({ description: 'Manufacturing year of the car' })
+  @IsInt({ message: 'Year must be an integer number' })
+  @Min(2000, { message: 'Year must not be less than 2000' })
+  @Max(new Date().getFullYear(), {
+    message: `Year must not be greater than ${new Date().getFullYear()}`,
+  })
   year: number;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @ApiProperty({ description: 'Car color' })
+  @IsString({ message: 'Color must be a string' })
+  @IsNotEmpty({ message: 'Color should not be empty' })
   color: string;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Category ID to which the car belongs' })
   @IsString()
   @IsNotEmpty()
   categoryId: string;
