@@ -64,4 +64,15 @@ export class CarService {
     await this.findOne(id, userId);
     return this.prisma.car.delete({ where: { id } });
   }
+
+  async findAll(userId: string) {
+    return this.prisma.car.findMany({
+      where: {
+        category: {
+          userId: userId,
+        },
+      },
+      include: { category: true },
+    });
+  }
 }

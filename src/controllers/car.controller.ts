@@ -28,6 +28,12 @@ export class CarController {
     return this.carService.create(req.user.id, createCarDto);
   }
 
+  @Get()
+  @ApiOperation({ summary: 'Get all cars for the authenticated user' })
+  findAll(@Request() req) {
+    return this.carService.findAll(req.user.id);
+  }
+
   @Get('category/:categoryId')
   @ApiOperation({ summary: 'Get all cars by category' })
   findByCategory(@Param('categoryId') categoryId: string, @Request() req) {

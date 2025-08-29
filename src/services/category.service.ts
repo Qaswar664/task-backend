@@ -14,14 +14,25 @@ export class CategoryService {
         ...createCategoryDto,
         userId,
       },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
   }
 
   async findAll(userId: string) {
     return this.prisma.category.findMany({
       where: { userId },
-      include: {
-        cars: true,
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
       },
     });
   }
@@ -29,8 +40,12 @@ export class CategoryService {
   async findOne(id: string, userId: string) {
     const category = await this.prisma.category.findFirst({
       where: { id, userId },
-      include: {
-        cars: true,
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
       },
     });
 
@@ -47,6 +62,13 @@ export class CategoryService {
     return this.prisma.category.update({
       where: { id },
       data: updateCategoryDto,
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
   }
 
@@ -55,6 +77,13 @@ export class CategoryService {
 
     return this.prisma.category.delete({
       where: { id },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
   }
 }
